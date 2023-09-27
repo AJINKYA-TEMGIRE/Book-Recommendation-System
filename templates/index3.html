@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommend the book</title>
+    <style>
+        body{
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNTS9-7w5IlOl18m_jrQ5Vhvea0GEYUk44ow&usqp=CAU");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: black;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .form{
+
+            display: flex;;
+            width: fit-content;
+            height: fit-content;
+            margin-left: 500px;
+            margin-top: 80px;
+        }
+        .name input{
+            width: 400px;
+            height: 40px;
+            font-size: x-large;
+        }
+        .submit input{
+            width: 100px;
+            height: 30px;
+            margin-top: 10px;
+        }
+        .bookrecommended{
+
+            width: fit-content;
+            height: fit-content;
+            display: flex;
+            flex-direction: row;
+            margin: 50px 105px;
+        }
+        .container{
+
+            width: 200px;
+            height: fit-content;
+            margin: 0px 15px;;
+        }
+        a{
+            text-decoration: none;
+            font-size: xx-large;
+            margin-left: 50px;
+            color: Red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="heading">
+        <h1 style="margin-left: 240px; color: white">Give the name of your book and you will get the recommendation</h1>
+        <h2 style="margin-left: 240px; color: red">Enter the correct name of the book(as it is) or this book might not exist.</h2>
+    </div>
+    <div class="form">
+        <form action="/predict" method="post">
+            <div class="name"><input type="text" name="bookname" placeholder="Type your book name"></div>
+            <div style="padding-left: 150px;" class="submit"><input type="submit" value="Recommend"></div>
+        </form>
+    </div>
+    <div class="bookrecommended">
+        {%  if data %}
+        {% for i in data %}
+        <div class="container">
+            <img src="{{i[2]}}">
+            <p >{{i[0]}}</p>
+            <h4>{{i[1]}}</h4>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="home"><a href="/home">Home</a></div>
+
+</body>
+</html>
