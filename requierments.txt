@@ -1,5 +1,0 @@
-flask
-sklearn
-numpy
-pickle
-gunicorn
